@@ -130,5 +130,16 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
  5. On clicking `OK` your new layer will be automatically added to the current project.
  6. On the Layers Panel, uncheck the populated places layer to view only the new layer.  
 
-**Task 3.2: Write an expression function for reverse geocoding using Nominatim's API.**
+**Task 3.2: Write an expression function to calculate a new 'address' field using Nominatim's reverse geocoding API.**
+
+ 1. Nominatim is the search engine used in Openstreetmap data
+ 
+ ```python select_populated_capitals('10000000')```
+ 
+ 2. Create a new layer containing only these selected points. Right click on the layer in the Layers planel and select `Save As`.
+ 3. Keeping all fields as default, just browse to the directory where you want to save the file and give it a name.
+ 4. Under `Encoding`, check the `Save only selected features` checkbox.
+ 5. On clicking `OK` your new layer will be automatically added to the current project.
+ 6. On the Layers Panel, uncheck the populated places layer to view only the new layer.  
+
 
