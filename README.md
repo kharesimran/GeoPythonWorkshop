@@ -102,7 +102,33 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
  
  7. Select `No labels` in the Layer Labeling Settings to disable the labels.
 
-**Task 2.2: Displaying Map Tips as 'City_Name, UTM_Zone: Population_Variation' when the mouse hovers over a feature**.
+**Task 2.2: Displaying Map Tips as 'City_Name: Population_Variation, UTM_Zone' when the mouse hovers over a feature**.
   
   1. Open Layer Properties and select `Display`.
-  2. Select the `HTML` radio button and click on `Insert expression`.  
+  2. Select the `HTML` radio button and click on `Insert expression`.
+  3. In the Insert Expression Dialog box, call the `get_population_variation()` function.
+  4. Similarly, call the `get_utm_zone()` function.
+  5. Enable Map Tips through the Attributes toolbar or *View -> Map Tips*
+  6. Now you will see a map tip on hovering the mouse over the feature. 
+
+
+## Task 3. Field Calculation with Expression Functions 
+
+  - **Dataset used:** Populated Places
+  - **Objective:** Write an expression function for reverse geocoding, i.e. get the address of each feature given its coordinates and store this address in the Attribute table.
+  - **Functions:** get_address()  
+  
+**Task 3.1: Creating a new layer with a subset of all the features.**  
+ 
+ 1. Select a subset of features from the layer with a simple selection expression. For example, select all capital cities with a population greater than 10 million.
+ 
+ ```python select_populated_capitals('10000000')```
+ 
+ 2. Create a new layer containing only these selected points. Right click on the layer in the Layers planel and select `Save As`.
+ 3. Keeping all fields as default, just browse to the directory where you want to save the file and give it a name.
+ 4. Under `Encoding`, check the `Save only selected features` checkbox.
+ 5. On clicking `OK` your new layer will be automatically added to the current project.
+ 6. On the Layers Panel, uncheck the populated places layer to view only the new layer.  
+
+**Task 3.2: Write an expression function for reverse geocoding using Nominatim's API.**
+
