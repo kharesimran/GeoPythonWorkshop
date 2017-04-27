@@ -47,12 +47,12 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 **Task 1.1: Selecting all capital cities with a population greater than a user defined number.**  
  
  1. Load the vector layer.  
-    ```Layer -> Add Layer -> Add Vector Layer -> Browse to the directory and select populated_places_simple file```
+    `Layer -> Add Layer -> Add Vector Layer -> Browse to the directory and select populated_places_simple file`
     
  2. View the attribute table as `Layer -> Open Attribute Table` or by clicking on the `Attribute Table` button in the Attribute bar.
  
  3. Open the `Select by Expression dialog box` either by clicking on the Select by Expression button on the Attributes toolbar or by
-    ```View -> Select -> Select by Expression```
+    `View -> Select -> Select by Expression`
     
  4. In the `Function Editor` tab create a new file and write your first custom python expression function as:
  
@@ -77,7 +77,9 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   3. Calculate the centroid using the built in `geometry()` function *(or method)* provided in `qgis.core` *(check)*.
   4. Return the calculated UTM zone.
   5. Select the features lying within a given UTM zone by calling the function as:
-     ```select_by_utm_zone() = '45N'```  
+     ```python
+        select_by_utm_zone() = '45N'
+     ```  
 
 ## Task 2. Feature Labeling and Displaying Map Tips with Expression Functions 
 
@@ -88,7 +90,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 **Task 2.1: Labeling all the points as 'City_Name: Population_Variation'.**  
  
  1. Open the `Layer Properties Dialog Box` by double clicking the layer in the Layers Panel or:  
-    ```Right click on the layer in the Layers Panel -> Properties```
+    `Right click on the layer in the Layers Panel -> Properties`
     
  2. Enable the labels by navigating to Layers and selecting `Show labels for this layer`.
  
@@ -121,8 +123,9 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 **Task 3.1: Creating a new layer with a subset of all the features.**  
  
  1. Select a subset of features from the layer with a simple selection expression. For example, select all capital cities with a population greater than 10 million.
- 
- ```python select_populated_capitals('10000000')```
+     ```python
+        select_populated_capitals('10000000')
+     ```
  
  2. Create a new layer containing only these selected points. Right click on the layer in the Layers planel and select `Save As`.
  3. Keeping all fields as default, just browse to the directory where you want to save the file and give it a name.
@@ -133,13 +136,3 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 **Task 3.2: Write an expression function to calculate a new 'address' field using Nominatim's reverse geocoding API.**
 
  1. Nominatim is the search engine used in Openstreetmap data
- 
- ```python select_populated_capitals('10000000')```
- 
- 2. Create a new layer containing only these selected points. Right click on the layer in the Layers planel and select `Save As`.
- 3. Keeping all fields as default, just browse to the directory where you want to save the file and give it a name.
- 4. Under `Encoding`, check the `Save only selected features` checkbox.
- 5. On clicking `OK` your new layer will be automatically added to the current project.
- 6. On the Layers Panel, uncheck the populated places layer to view only the new layer.  
-
-
