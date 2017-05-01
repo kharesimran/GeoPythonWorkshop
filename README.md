@@ -2,7 +2,7 @@
 For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Functions. 
 
 ## What can we accomplish with Custom Python Expression Functions in QGIS?
-  Expression functions in QGIS give us the power to perform tasks like the following in a customized way suited to our specific needs.  
+  Expression functions in QGIS give us the power to perform tasks in a customized way suited to our specific needs. Some of those tasks are:  
   * Feature selection
   * Field calculation
   * Feature labeling
@@ -10,13 +10,17 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   
 ## Getting started
 
-1. Download and install QGIS 2.14/2.18 ([Link to the download page](http://www.qgis.org/en/site/forusers/download.html)).
+1. Download and install QGIS 2.18 ([Link to the download page](http://www.qgis.org/en/site/forusers/download.html)).
 2. Get some sample data:
     * The [Populated Places (Simple)](http://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-populated-places/) dataset containing various city and town points from Natural Earth.
-    * The [Uster]() geopackage from Openstreetmap.   
+    * The [Uster]() geopackage containing several vector layers from Openstreetmap.   
 3. Start up QGIS 2.18 and we're ready!
 
-**Note:** This repository contains some incomplete code snippets which we will complete together during the workshop. You can either save them to `.qgis2/python/expressions` or do a quick copy-paste as we go along. 
+**Notes:**
+  * This repository contains some expression functions that we will use during the workshop. You can either save them to `%userprofile%/.qgis2/python/expressions` or do a quick copy-paste as we go along.
+
+  * For QGIS 2.14 users, please see the section **Notes for QGIS 2.14** below. 
+
 
 ## Things to Note About Custom Python Expression Functions in QGIS
 
@@ -72,7 +76,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 
 **Task 1.2: Selecting Features based on the value of their calculated [UTM Zone](http://www.dmap.co.uk/utmworld.htm)**.
   
-  1. Please find the scaffolding code in the function `select_by_utm_zone()` in `Code-snippets-for-workshop/pp-select-features.py`
+  1. Please find the code in the function `select_by_utm_zone()` in `Code-snippets-for-workshop/select-by-utm-zone.py`
   2. Calculate the centroid using the built in `geometry()` function *(or method)* provided in `qgis.core` *(check)*.
   3. Calculate the centroid using the built in `geometry()` function *(or method)* provided in `qgis.core` *(check)*.
   4. Return the calculated UTM zone.
@@ -136,3 +140,26 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 **Task 3.2: Write an expression function to calculate a new 'address' field using Nominatim's reverse geocoding API.**
 
  1. Nominatim is the search engine used in Openstreetmap data
+
+
+
+
+# Notes for QGIS 2.14
+
+When writing custom expression functions in QGIS 2.14, a few differences must be noted.
+
+  In QGIS 2.18, we need to pass as arguments, any layer attributes that we intend to use in our expression function. However, this is not a requirement in QGIS 2.14. So the function `select_populated_capitals()` in QGIS 2.14 would look like the following. 
+
+    ```python
+    @qgsfunction(args='auto', group='Populated places')
+    def select_populated_capitals(input_pop, feature, parent):
+      is_capital = feature['featurecla'] == 'Admin-0 capital'
+      is_populated = int(feature['pop_max']) > int(input_pop)
+      return is_capital and is_populated
+    ```
+    
+ We can call the function from the expression engine as: 
+   
+   ```python
+    select_populated_capitals(input_pop, feature, parent):
+   ```
