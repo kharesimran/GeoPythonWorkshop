@@ -2,7 +2,7 @@
 For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Functions. 
 
 ## What can we accomplish with Custom Python Expression Functions in QGIS?
-  Expression functions in QGIS give us the power to perform tasks in a customized way suited to our specific needs. Some of those tasks are:  
+  Expression functions in QGIS give us the power to perform tasks in a customized way. During this workshop we will discuss how we can write functions for the following tasks to meet our specific needs.   
   * Feature selection
   * Field calculation
   * Feature labeling
@@ -24,11 +24,12 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 
 ## Things to Note About Custom Python Expression Functions in QGIS
 
-* Import the modules `qgis.core` and `qgis.gui`. *(Find out why and which functions are using them)*
+* The modules `qgis.core` and `qgis.gui`.
 * Expression functions are called iteratively for each feature on the layer.
 * Expression funcions must be preceded by the `@qgsfunction` decorator.
 * The function must receive `feature` and `parent` as its last two parameters.
-* The feature's attributes can be accessed as `feature['attribute_name]`. 
+* The feature's attributes can be accessed as `feature['attribute_name']`.
+* The feature attributes that we intend to use within the function must be supplied as arguments to the function. This is a new addition to QGIS 2.18 in contrast to QGIS 2.14. The latest release of QGIS only fetches the data we explicitly specify as required, with the view of achieving better performance.      
 
 **Syntax:**
 
@@ -61,24 +62,23 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
  4. In the `Function Editor` tab create a new file and write your first custom python expression function as:
  
     ```python
-    @qgsfunction(args='auto', group='Populated places')
-    def select_populated_capitals(input_pop, feature, parent):
+    @qgsfunction(args=0, group='Populated places')
+    def select_country_capitals(field1, feature, parent):
       is_capital = feature['featurecla'] == 'Admin-0 capital'
-      is_populated = int(feature['pop_max']) > int(input_pop)
-      return is_capital and is_populated
+      return is_capital
     ```
     
   5. Click on `Load`.
   
-  6. In the `Expression Engine` tab, call your function as `select_populated_capitals(input_pop)`.
+  6. In the `Expression Engine` tab, call your function as `select_populated_capitals("featurecla")`.
   
   7. Done! Now you can view the selected features on the layer and in the attribute table.   
 
 **Task 1.2: Selecting Features based on the value of their calculated [UTM Zone](http://www.dmap.co.uk/utmworld.htm)**.
   
-  1. Please find the code in the function `select_by_utm_zone()` in `Code-snippets-for-workshop/select-by-utm-zone.py`
-  2. Calculate the centroid using the built in `geometry()` function *(or method)* provided in `qgis.core` *(check)*.
-  3. Calculate the centroid using the built in `geometry()` function *(or method)* provided in `qgis.core` *(check)*.
+  1. Please find the code in the function `calculate_utm_zone()` in `calculate-utm-zone.py`
+  2. Calculate the centroid using the built in `geometry()` method.
+  3. Calculate the latitude and l using the built in `geometry()` function *(or method)* provided in `qgis.core` *(check)*.
   4. Return the calculated UTM zone.
   5. Select the features lying within a given UTM zone by calling the function as:
      ```python
@@ -126,7 +126,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   
 **Task 3.1: Creating a new layer with a subset of all the features.**  
  
- 1. Select a subset of features from the layer with a simple selection expression. For example, select all capital cities with a population greater than 10 million.
+ 1. Select a subset of features from the layer with a simple selection expression. For example, select all capital cities with a population rank of 14.
      ```python
         select_populated_capitals('10000000')
      ```
@@ -139,7 +139,10 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 
 **Task 3.2: Write an expression function to calculate a new 'address' field using Nominatim's reverse geocoding API.**
 
- 1. Nominatim is the search engine used in Openstreetmap data
+ 1. Nominatim is the search engine used in Openstreetmap data. We will be using Nominatim's [reverse geocoding API](http://wiki.openstreetmap.org/wiki/Nominatim#Reverse_Geocoding) to get the address of a point given its latitude and longitude.
+ 2. We will select a subset of features to get the address of. Let's select all points with a population rank of 14. To do this, call the 
+ 3. 
+ 
 
 
 
