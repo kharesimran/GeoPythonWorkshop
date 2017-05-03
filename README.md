@@ -40,8 +40,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   - **Dataset used:** Populated Places
   - **Objective:** Write expression functions to select features based on values computed using their attributes.
   - **Functions:** is_populous_capital() and get_utm_zone() 
-
-
+  
 ### Task 1.1. Selecting all capital cities with a population greater than a user defined number.
 
   1. Load the vector layer. *Layer -> Add Layer -> Add Vector Layer -> Browse to the directory and select populated_places_simple file*.
@@ -49,18 +48,19 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   3. Open the *Select by Expression dialog box* either by clicking on the *Select by Expression* button on the Attributes toolbar or by
     *View -> Select -> Select by Expression*.
   4. In the Function Editor tab create a new file and write a custom python expression function as:
- 
-    ```python
-    @qgsfunction(args='auto', group='Custom', referenced_columns=['featurecla', 'pop_max'])
-    def is_populous_capital(input_pop, feature, parent):
-      is_capital = feature['featurecla'] == 'Admin-0 capital'
-      is_populous = feature['pop_max'] > input_pop
-      return is_capital and is_populous
-    ```
+   
+   
+  ```python
+  @qgsfunction(args='auto', group='Custom', referenced_columns=['featurecla', 'pop_max'])
+  def is_populous_capital(input_pop, feature, parent):
+    is_capital = feature['featurecla'] == 'Admin-0 capital'
+    is_populous = feature['pop_max'] > input_pop
+    return is_capital and is_populous
+  ```
     
   5. Click on *Load*.
   6. In the Expression Engine tab, call your function as `is_country_capital(500000)`.
-  7. Done! Now you can view the selected features on the layer and in the attribute table.    
+  7. Done! Now you can view the selected features on the layer and in the attribute table.
 
 ### Task 1.2. Selecting Features based on the value of their calculated [UTM Zone](http://www.dmap.co.uk/utmworld.htm).
   
@@ -111,7 +111,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   6. On the Layers Panel, uncheck the populated places layer to view only the new layer. 
 
 
-### Task 3.2. Write an expression function to calculate a new 'address' field using Nominatim's reverse geocoding API.
+### Task 3.2. Write an expression function to calculate a new 'address' field.
 
  1. Nominatim is the search engine used in Openstreetmap data. We will be using Nominatim's [reverse geocoding API](http://wiki.openstreetmap.org/wiki/Nominatim#Reverse_Geocoding) to get the address of a point given its latitude and longitude.
  2. Open the Field Calculator by clicking on the *Field Calculator* button in the attributes toolbar. 
