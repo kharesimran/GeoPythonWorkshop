@@ -17,7 +17,6 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 
 **Notes:**
   * This repository contains some expression functions that we will use during the workshop. You can save them to `%userprofile%/.qgis2/python/expressions`.
-
   * For QGIS 2.14 users, please see the section **Notes for QGIS 2.14** below. 
 
 
@@ -78,13 +77,9 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
  
  1. Open the *Layer Properties Dialog Box* by double clicking the layer in the Layers Panel or *Right click on the layer in the Layers Panel -> Properties*.
  2. Enable the labels by navigating to Layers and selecting *Show labels for this layer*.
- 
  3. Load and call the function `get_population_rank()` in the Expression tab.
-    
  4. Click *OK* to apply the changes and close the dialog box.
-  
  5. Done! The map will now display the labeled features.
- 
  6. Select *No labels* in the Layer Labeling Settings to disable the labels.
 
 ### Task 2.2. Displaying Map Tips as 'City_Name, UTM_Zone: Population_Rank' when the mouse hovers over a feature.
