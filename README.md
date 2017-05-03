@@ -136,10 +136,10 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 
 In QGIS 2.18, any feature attributes/columns that we use within the function must be specified as 'referenced_columns' in the @qgsfunction decorator. This is optional in QGIS 2.14. The latest release of QGIS only fetches the data we explicitly specify as required, in order to optimize the performance. So, for example, the function below when called as `is_populous_capital(100000)` would work perfectly in QGIS 2.14, but would fail to select any features in 2.18.
 
-    ```python
+  ```python
     @qgsfunction(args='auto', group='Custom')
     def is_populous_capital(input_pop, feature, parent):
       is_capital = feature['featurecla'] == 'Admin-0 capital'
       is_populated = feature['pop_max'] > input_pop
       return is_capital and is_populated
-    ```
+  ```
