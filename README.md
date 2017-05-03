@@ -41,13 +41,14 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   - **Objective:** Write expression functions to select features based on values computed using their attributes.
   - **Functions:** is_populous_capital() and get_utm_zone() 
 
-### Task 1.1. Selecting all capital cities with a population greater than a user defined number.  
- 
- 1. Load the vector layer. *Layer -> Add Layer -> Add Vector Layer -> Browse to the directory and select populated_places_simple file*.
- 2. View the attribute table as *Layer -> Open Attribute Table* or by clicking on the *Attribute Table* button in the Attribute bar.
- 3. Open the *Select by Expression dialog box* either by clicking on the *Select by Expression* button on the Attributes toolbar or by
+
+### Task 1.1. Selecting all capital cities with a population greater than a user defined number.
+
+  1. Load the vector layer. *Layer -> Add Layer -> Add Vector Layer -> Browse to the directory and select populated_places_simple file*.
+  2. View the attribute table as *Layer -> Open Attribute Table* or by clicking on the *Attribute Table* button in the Attribute bar.
+  3. Open the *Select by Expression dialog box* either by clicking on the *Select by Expression* button on the Attributes toolbar or by
     *View -> Select -> Select by Expression*.
- 4. In the Function Editor tab create a new file and write a custom python expression function as:
+  4. In the Function Editor tab create a new file and write a custom python expression function as:
  
     ```python
     @qgsfunction(args='auto', group='Custom', referenced_columns=['featurecla', 'pop_max'])
