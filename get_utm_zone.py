@@ -1,11 +1,9 @@
 from qgis.core import *
-from qgis.gui import *
 import math
 
-
-@qgsfunction(args='auto', group='Populated places', usesgeometry=True)
+@qgsfunction(args='auto', group='Custom', usesgeometry=True)
 def get_utm_zone(feature, parent):
-	""" 
+	"""
 	Returns the UTM zone that each feature lies in.
 	Usage: get_utm_zone()
 	"""

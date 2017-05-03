@@ -1,15 +1,11 @@
-from qgis.core import *
-from qgis.gui import *
-
-
-@qgsfunction(args='auto', group='Populated places')
-def get_population_rank(field, feature, parent):
+@qgsfunction(args='auto', group='Custom', referenced_columns=['pop_max'])
+def get_population_rank(feature, parent):
 	"""
 	Returns the population rank of a feature as defined in
 	http://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
-	Usage: get_population_rank("pop_max") 
+	Usage: get_population_rank()
 	"""
-	pop = feature["pop_max"]
+	pop = feature['pop_max']
 	if pop > 10000000:
 		pop_rank = 14
 	elif pop > 5000000:
