@@ -45,14 +45,14 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 **Task 1.1: Selecting all capital cities with a population greater than a user defined number.**  
  
  1. Load the vector layer.  
-    `Layer -> Add Layer -> Add Vector Layer -> Browse to the directory and select populated_places_simple file`
+    *Layer -> Add Layer -> Add Vector Layer -> Browse to the directory and select populated_places_simple file*
     
- 2. View the attribute table as `Layer -> Open Attribute Table` or by clicking on the `Attribute Table` button in the Attribute bar.
+ 2. View the attribute table as *Layer -> Open Attribute Table* or by clicking on the *Attribute Table* button in the Attribute bar.
  
- 3. Open the `Select by Expression dialog box` either by clicking on the Select by Expression button on the Attributes toolbar or by
-    `View -> Select -> Select by Expression`
+ 3. Open the *Select by Expression dialog box* either by clicking on the *Select by Expression* button on the Attributes toolbar or by
+    *View -> Select -> Select by Expression*
     
- 4. In the `Function Editor` tab create a new file and write your first custom python expression function as:
+ 4. In the Function Editor tab create a new file and write a custom python expression function as:
  
     ```python
     @qgsfunction(args='auto', group='Custom', referenced_columns=['featurecla', 'pop_max'])
@@ -62,20 +62,17 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
       return is_capital and is_populous
     ```
     
-  5. Click on `Load`.
+  5. Click on *Load*.
   
-  6. In the `Expression Engine` tab, call your function as `is_country_capital(500000)`.
+  6. In the Expression Engine tab, call your function as `is_country_capital(500000)`.
   
   7. Done! Now you can view the selected features on the layer and in the attribute table.   
 
 **Task 1.2: Selecting Features based on the value of their calculated [UTM Zone](http://www.dmap.co.uk/utmworld.htm)**.
   
-  1. Please find the code in the function `get_utm_zone()` in `get-utm-zone.py`
+  1. Please find the code in *get_utm_zone.py*.
   2. Note how we can get the feature's geometry, latitude and longitude using the built-in methods provided by the QGIS Python API. ([Link](http://geoapis.sourcepole.com/qgispyapi/) to the documentation).
-  3. Select the features lying within a given UTM zone by calling the function as:
-     ```python
-        get_utm_zone() = '45N'
-     ```  
+  3. Select the features lying within a given UTM zone by calling the function as `get_utm_zone() = '45N'`.  
 
 ## Task 2. Feature Labeling and Displaying Map Tips with Expression Functions 
 
@@ -85,23 +82,23 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   
 **Task 2.1: Labeling all the points as 'City_Name: Population_Rank'.**  
  
- 1. Open the `Layer Properties Dialog Box` by double clicking the layer in the Layers Panel or:  
-    `Right click on the layer in the Layers Panel -> Properties`
+ 1. Open the *Layer Properties Dialog Box* by double clicking the layer in the Layers Panel or:  
+    *Right click on the layer in the Layers Panel -> Properties*
     
- 2. Enable the labels by navigating to Layers and selecting `Show labels for this layer`.
+ 2. Enable the labels by navigating to Layers and selecting *Show labels for this layer*.
  
  3. Load and call the function `get_population_rank()` in the Expression tab.
     
- 4. Click `OK` to apply the changes and close the dialog box.
+ 4. Click *OK* to apply the changes and close the dialog box.
   
  5. Done! The map will now display the labeled features.
  
- 6. Select `No labels` in the Layer Labeling Settings to disable the labels.
+ 6. Select *No labels* in the Layer Labeling Settings to disable the labels.
 
 **Task 2.2: Displaying Map Tips as 'City_Name, UTM_Zone: Population_Rank' when the mouse hovers over a feature**.
   
-  1. Open Layer Properties and select `Display`.
-  2. Select the `HTML` radio button and click on `Insert expression`.
+  1. Open Layer Properties and select *Display*.
+  2. Select the *HTML* radio button and click on *Insert expression*.
   3. In the Insert Expression Dialog box, call the `get_utm_zone()` function.
   4. Similarly, call the `get_population_rank()` function.
   5. Enable Map Tips through the Attributes toolbar or *View -> Map Tips*
@@ -117,14 +114,15 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 **Task 3.1: Creating a new layer with a subset of all the features.**  
  
  1. Select a subset of features from the layer with a simple selection expression. For example, select all capital cities with a population rank of 14.
-     ```python
-        select_populated_capitals('10000000')
-     ```
+
+    ```python
+     get_population_rank() = 14
+    ```
  
- 2. Create a new layer containing only these selected points. Right click on the layer in the Layers planel and select `Save As`.
- 3. Keeping all fields as default, just browse to the directory where you want to save the file and give it a name.
- 4. Under `Encoding`, check the `Save only selected features` checkbox.
- 5. On clicking `OK` your new layer will be automatically added to the current project.
+ 2. Create a new layer containing only these selected points. Right click on the layer in the Layers planel and select *Save As*.
+ 3. Keeping all fields as default, browse to the directory where you want to save the file and give it a name.
+ 4. Under *Encoding*, check the *Save only selected features* checkbox.
+ 5. On clicking *OK* your new layer will be automatically added to the current project.
  6. On the Layers Panel, uncheck the populated places layer to view only the new layer.  
 
 **Task 3.2: Write an expression function to calculate a new 'address' field using Nominatim's reverse geocoding API.**
