@@ -29,7 +29,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 **Syntax:**
 
   ```python
-      @qgsfunction(args='auto', group='Custom', referenced_column=['column_name'])
+      @qgsfunction(args='auto', group='Custom', referenced_columns=['column_name'])
       def function_name(input_value, feature, parent):
           # Statements to be executed 
           return return_value
