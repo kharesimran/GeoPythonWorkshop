@@ -44,14 +44,10 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 
 **Task 1.1: Selecting all capital cities with a population greater than a user defined number.**  
  
- 1. Load the vector layer.  
-    *Layer -> Add Layer -> Add Vector Layer -> Browse to the directory and select populated_places_simple file*
-    
+ 1. Load the vector layer. *Layer -> Add Layer -> Add Vector Layer -> Browse to the directory and select populated_places_simple file*.
  2. View the attribute table as *Layer -> Open Attribute Table* or by clicking on the *Attribute Table* button in the Attribute bar.
- 
  3. Open the *Select by Expression dialog box* either by clicking on the *Select by Expression* button on the Attributes toolbar or by
-    *View -> Select -> Select by Expression*
-    
+    *View -> Select -> Select by Expression*.
  4. In the Function Editor tab create a new file and write a custom python expression function as:
  
     ```python
@@ -63,12 +59,10 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
     ```
     
   5. Click on *Load*.
-  
   6. In the Expression Engine tab, call your function as `is_country_capital(500000)`.
-  
-  7. Done! Now you can view the selected features on the layer and in the attribute table.   
+  7. Done! Now you can view the selected features on the layer and in the attribute table.    
 
-**Task 1.2: Selecting Features based on the value of their calculated [UTM Zone](http://www.dmap.co.uk/utmworld.htm)**.
+**Task 1.2 Selecting Features based on the value of their calculated [UTM Zone](http://www.dmap.co.uk/utmworld.htm)**.
   
   1. Please find the code in *get_utm_zone.py*.
   2. Note how we can get the feature's geometry, latitude and longitude using the built-in methods provided by the QGIS Python API. ([Link](http://geoapis.sourcepole.com/qgispyapi/) to the documentation).
@@ -82,9 +76,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   
 **Task 2.1: Labeling all the points as 'City_Name: Population_Rank'.**  
  
- 1. Open the *Layer Properties Dialog Box* by double clicking the layer in the Layers Panel or:  
-    *Right click on the layer in the Layers Panel -> Properties*
-    
+ 1. Open the *Layer Properties Dialog Box* by double clicking the layer in the Layers Panel or *Right click on the layer in the Layers Panel -> Properties*.
  2. Enable the labels by navigating to Layers and selecting *Show labels for this layer*.
  
  3. Load and call the function `get_population_rank()` in the Expression tab.
