@@ -16,22 +16,21 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 3. Start up QGIS 2.18 and we're ready!
 
 **Notes:**
-  * This repository contains some expression functions that we will use during the workshop. You can either save them to `%userprofile%/.qgis2/python/expressions` or do a quick copy-paste as we go along.
+  * This repository contains some expression functions that we will use during the workshop. You can save them to `%userprofile%/.qgis2/python/expressions`.
 
   * For QGIS 2.14 users, please see the section **Notes for QGIS 2.14** below. 
 
 
 ## Things to Note About Custom Python Expression Functions in QGIS
 
-* Custom expression funcions must be preceded by the `@qgsfunction` decorator.
-* The function must receive `feature` and `parent` as its last two parameters.
-* The feature's attributes can be accessed as `feature['attribute_name']`.
-* The feature attributes that we intend to use within the function must be specified as 'referenced_columns' in the @qgsfunction decorator. This is a new addition to QGIS 2.18 in contrast to QGIS 2.14. The latest release of QGIS only fetches the data we explicitly specify as required, in order to optimize the performance.      
+* Custom expression funcions must be preceded by the *@qgsfunction* decorator.
+* The function must receive *feature* and *parent* as its last two parameters.
+* The feature attributes that we intend to use within the function must be specified as 'referenced_columns' in the @qgsfunction decorator.
 
 **Syntax:**
 
   ```python
-      @qgsfunction(args='auto', group='Custom')
+      @qgsfunction(args='auto', group='Custom', referenced_column=['column_name'])
       def function_name(input_value, feature, parent):
           # Statements to be executed 
           return return_value
@@ -137,20 +136,12 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 
 # Notes for QGIS 2.14
 
-When writing custom expression functions in QGIS 2.14, a few differences must be noted.
-
-  In QGIS 2.18, we need to pass as arguments, any layer attributes that we intend to use in our expression function. However, this is not a requirement in QGIS 2.14. So the function `select_populated_capitals()` in QGIS 2.14 would look like the following. 
+In QGIS 2.18, any feature attributes/columns that we use within the function must be specified as 'referenced_columns' in the @qgsfunction decorator. This is optional in QGIS 2.14. The latest release of QGIS only fetches the data we explicitly specify as required, in order to optimize the performance. So, for example, the function below when called as `is_populous_capital(100000)` would work perfectly in QGIS 2.14, but would fail to select any features in 2.18.
 
     ```python
-    @qgsfunction(args='auto', group='Populated places')
-    def select_populated_capitals(input_pop, feature, parent):
+    @qgsfunction(args='auto', group='Custom')
+    def is_populous_capital(input_pop, feature, parent):
       is_capital = feature['featurecla'] == 'Admin-0 capital'
-      is_populated = int(feature['pop_max']) > int(input_pop)
+      is_populated = feature['pop_max'] > input_pop
       return is_capital and is_populated
     ```
-    
- We can call the function from the expression engine as: 
-   
-   ```python
-    select_populated_capitals(input_pop, feature, parent):
-   ```
