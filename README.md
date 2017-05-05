@@ -126,7 +126,33 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
  8. The function might take a while to execute, when done, open the Attribute Table.
  9. A new column named 'address' containing the address for each feature will have been added to the attribute table.
  
- 
+
+## Task 4. Recap and working with OSM data 
+
+  - **Dataset used:** Uster
+  - **Objective:** Recap of what we have learnt to select all the restaurants in Uster and label them with their addresses.
+  - **Functions:** hstore_contains_key_value() and hstore_get_value()
+  
+### Task 4.1. Filtering out all the restaurant points.
+
+  1. Right click on the layer *uster_address_p* and click on *Filter*.
+  2. In the *Query Builder* dialog box, under *Provider specific filter expression*, emter the expression as:
+  ```python
+     "tags" LIKE '%"amenity"=>"restaurant"%'
+    ```
+  3. Click on *OK*. Only the restaurants will now be visible on the map.
+
+### Task 4.2. Labeling the restaurants as 'Name, address'.
+
+ 1. Go to *Layer Properties -> Labels* or click on the *Layer labeling Options* in the Labels toolbar.
+ 2. Select *Show labels for this layer*.
+ 3. Click on the *Expression* button to open the *Expression dialog*.
+ 4. Write an expression using the hstore_get_value() function as:
+  ```python
+     hstore_get_value('name')  || ', '  || hstore_get_value('addr:street') || ' '  || hstore_get_value('addr:housenumber')
+  ```
+  5. The label styles and colours can be changed in the *Layer Styling* panel.  
+
 ## Notes for QGIS 2.14
 
 In QGIS 2.18, any feature attributes/columns that we use within the function must be specified as 'referenced_columns' in the @qgsfunction decorator. This is optional in QGIS 2.14. The latest release of QGIS only fetches the data we explicitly specify as required, in order to optimize the performance. So, for example, the function below when called as `is_populous_capital(100000)` would work perfectly in QGIS 2.14, but would fail to select any features in 2.18.
