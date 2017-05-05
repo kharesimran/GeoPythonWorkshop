@@ -139,7 +139,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   2. In the *Query Builder* dialog box, under *Provider specific filter expression*, emter the expression as:
   ```python
      "tags" LIKE '%"amenity"=>"restaurant"%'
-    ```
+ ```
   3. Click on *OK*. Only the restaurants will now be visible on the map.
 
 ### Task 4.2. Labeling the restaurants as 'Name, address'.
@@ -148,7 +148,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
  2. Select *Show labels for this layer*.
  3. Click on the *Expression* button to open the *Expression dialog*.
  4. Write an expression using the hstore_get_value() function as:
-  ```python
+  ```
      hstore_get_value('name')  || ', '  || hstore_get_value('addr:street') || ' '  || hstore_get_value('addr:housenumber')
   ```
   5. The label styles and colours can be changed in the *Layer Styling* panel.  
