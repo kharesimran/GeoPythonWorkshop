@@ -59,7 +59,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   ```
     
   5. Click on *Load*.
-  6. In the Expression Engine tab, call your function as `is_country_capital(500000)`.
+  6. In the Expression Engine tab, call your function as `is_populous_capital(500000)`.
   7. Done! Now you can view the selected features on the layer and in the attribute table.
 
 ### Task 1.2. Selecting Features based on the value of their calculated [UTM Zone](http://www.dmap.co.uk/utmworld.htm).
@@ -100,10 +100,10 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   
 ### Task 3.1. Creating a new layer with a subset of all the features.
 
-  1. We will select a subset of features to get the address of. We can do this with a simple selection expression. For example, select all capital cities with a population rank of 14.
-    ```python
-      get_population_rank() = 14
-    ```
+  1. We will select a subset of features to get the address of. We can do this with a simple selection expression. For example, select all capital cities with a population rank of 14.  
+      ```python
+       get_population_rank() = 14
+      ```
   2. Create a new layer containing only these selected points. Right click on the layer in the Layers planel and select *Save As*.
   3. Keeping all fields as default, browse to the directory where you want to save the file and give it a name.
   4. Under *Encoding*, check the *Save only selected features* checkbox.
