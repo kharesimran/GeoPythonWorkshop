@@ -127,7 +127,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
  9. A new column named 'address' containing the address for each feature will have been added to the attribute table.
  
 
-## Task 4. Recap and working with OSM data 
+## Task 4. Recap and Working with OSM Data 
 
   - **Dataset used:** Uster
   - **Objective:** Recap of what we have learnt to select all the restaurants in Uster and label them with their addresses.
