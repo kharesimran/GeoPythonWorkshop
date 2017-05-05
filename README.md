@@ -12,11 +12,11 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 1. Download and install QGIS 2.18 ([Link to the download page](http://www.qgis.org/en/site/forusers/download.html)).
 2. Get some sample data:
     * The [Populated Places (Simple)](http://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-populated-places/) dataset containing various city and town points from Natural Earth.
-    * The [Uster]() geopackage containing several vector layers from Openstreetmap.   
+    * The [Uster](https://www.dropbox.com/s/nl8f8bim57pa0jm/uster.qgs?dl=0) geopackage containing several vector layers from Openstreetmap.   
 3. Start up QGIS 2.18 and we're ready!
 
 **Notes:**
-  * This repository contains some expression functions that we will use during the workshop. You can save them to `%userprofile%/.qgis2/python/expressions`.
+  * This repository contains some expression functions that we will use during the workshop. Please navigate to  You can save them to `%userprofile%/.qgis2/python/expressions`.
   * For QGIS 2.14 users, please see the section **Notes for QGIS 2.14** below. 
 
 
