@@ -13,5 +13,5 @@ def hstore_get_value(key, feature, parent):
     if re_output:
     	value = re_output.group(1)
     else:
-    	value = ''
+    	value = key + ' not known'
     return value
