@@ -1,5 +1,5 @@
-from qgis.gui import *
-import urllib, urllib2
+from qgis.utils import *
+import urllib2
 import json
 import time
 
@@ -14,9 +14,8 @@ def get_address(feature, parent):
 	lat = feature['latitude']
 	lon = feature['longitude']
 	request_string = get_request_string(lat, lon)
-	data = get_data()
 	header = get_header()
-	req = urllib2.Request(request_string, data, header)
+	req = urllib2.Request(url=request_string, headers=header)
 	response = urllib2.urlopen(req).read()
 	info = json.loads(response)
 	time.sleep(1)
@@ -28,27 +27,12 @@ def get_address(feature, parent):
 
 
 def get_request_string(lat, lon):
-	query = "format=json&lat="+str(lat)+"&lon="+str(lon)+"&zoom=18&addressdetails=1"
+	query = "format=json&lat="+str(lat)+"&lon="+str(lon)
 	request_string = "http://nominatim.openstreetmap.org/reverse?" + query
 	return request_string
-
-
-def get_data():
-	values = {'name': get_env_variable('user_full_name'),
-				   'language': 'Python'}
-	data = urllib.urlencode(values) 
-	return data
 
 
 def get_header():
 	user_agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)'
 	header = {'User-Agent': user_agent}
 	return header
-
-
-def get_env_variable(var_name):
-    """ Returns the value of the variable 'var_name' """
-    active_layer = iface.activeLayer()
-    return QgsExpressionContextUtils.layerScope(active_layer).variable(var_name) \
-         or QgsExpressionContextUtils.projectScope().variable(var_name) \
-         or QgsExpressionContextUtils.globalScope().variable(var_name)
