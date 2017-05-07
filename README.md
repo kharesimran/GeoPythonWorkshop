@@ -12,7 +12,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 1. Download and install QGIS 2.18 ([Link to the download page](http://www.qgis.org/en/site/forusers/download.html)).
 2. Get some sample data:
     * The [Populated Places (Simple)](http://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-populated-places/) dataset containing various city and town points from Natural Earth.
-    * The [Uster](https://www.dropbox.com/s/nl8f8bim57pa0jm/uster.qgs?dl=0) geopackage containing several vector layers from Openstreetmap.   
+    * The [Uster](https://www.dropbox.com/home?preview=Uster.zip) geopackage containing several vector layers of Openstreetmap data downloaded from [OSMaxx](https://osmaxx.hsr.ch/).   
 3. Start up QGIS 2.18 and we're ready!
 
 **Notes:**
@@ -127,13 +127,13 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
  9. A new column named 'address' containing the address for each feature will have been added to the attribute table.
  
 
-## Task 4. Recap and Working with OSM Data 
+## Recap and Working with OSM Data 
 
   - **Dataset used:** Uster
   - **Objective:** Recap of what we have learnt to select all the restaurants in Uster and label them with their addresses.
   - **Functions:** hstore_contains_key_value() and hstore_get_value()
   
-### Task 4.1. Filtering out all the restaurant points.
+### Filtering out all the restaurant points.
 
   1. Right click on the layer *uster_address_p* and click on *Filter*.
   2. In the *Query Builder* dialog box, under *Provider specific filter expression*, emter the expression as:
@@ -142,7 +142,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
  ```
   3. Click on *OK*. Only the restaurants will now be visible on the map.
 
-### Task 4.2. Labeling the restaurants as 'Name, address'.
+### Labeling the restaurants as 'Name, address'.
 
  1. Go to *Layer Properties -> Labels* or click on the *Layer labeling Options* in the Labels toolbar.
  2. Select *Show labels for this layer*.
