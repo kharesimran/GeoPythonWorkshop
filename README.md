@@ -12,7 +12,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 1. Download and install QGIS 2.18 ([Link to the download page](http://www.qgis.org/en/site/forusers/download.html)).
 2. Get some sample data:
     * The [Populated Places (Simple)](http://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-populated-places/) dataset containing various city and town points from Natural Earth.
-    * The [Uster](https://www.dropbox.com/home?preview=Uster.zip) geopackage containing several vector layers of Openstreetmap data downloaded from [OSMaxx](https://osmaxx.hsr.ch/).   
+    * The [Uster](https://drive.google.com/file/d/0B6XgCRKKPmwzMWRTcFR6SzJNZkU/view?usp=sharing) geopackage containing several vector layers of Openstreetmap data downloaded from [OSMaxx](https://osmaxx.hsr.ch/).   
 3. Start up QGIS 2.18 and we're ready!
 
 **Notes:**
