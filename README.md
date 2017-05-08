@@ -115,10 +115,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 
  1. Nominatim is the search engine used in Openstreetmap data. We will be using Nominatim's [reverse geocoding API](http://wiki.openstreetmap.org/wiki/Nominatim#Reverse_Geocoding) to get the address of a point given its latitude and longitude.
  2. Open the Field Calculator by clicking on the *Field Calculator* button in the attributes toolbar. 
- 3. Note the following in *get_address.py*. 
-    * In the function get_address(), we make an API request, passing the latitude and longitude, as well as some more data in accordance with the API's usage policy.
-    * With the function get_env_variable(), we can get the value of any global, project or layer variable.
-    * The iface object gives us access to a wide range of QGIS objects and classes.
+ 3. Note that in the function get_address(), we make an API request, passing the latitude and longitude, as well as some more data in accordance with the API's usage policy.
  4. In the Field Calculator, enter the *Output field name* as 'address'.
  5. Change the *Output Field Type* to 'Text (string)'.
  6. Enter a value for the *Output Field Length*, say '100'.
@@ -127,7 +124,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
  9. A new column named 'address' containing the address for each feature will have been added to the attribute table.
  
 
-## Recap and Working with OSM Data 
+## Recap and Working with OSM Data
 
   - **Dataset used:** Uster
   - **Objective:** Recap of what we have learnt to select all the restaurants in Uster and label them with their addresses.
