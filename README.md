@@ -12,7 +12,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 1. Download and install QGIS 2.18 ([Link to the download page](http://www.qgis.org/en/site/forusers/download.html)).
 2. Get some sample data:
     * The [Populated Places (Simple)](http://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-populated-places/) dataset containing various city and town points from Natural Earth.
-    * The [Uster](https://www.dropbox.com/s/nl8f8bim57pa0jm/uster.qgs?dl=0) geopackage containing several vector layers from Openstreetmap.   
+    * The [Uster](https://www.dropbox.com/home?preview=Uster.zip) geopackage containing several vector layers of Openstreetmap data downloaded from [OSMaxx](https://osmaxx.hsr.ch/).   
 3. Start up QGIS 2.18 and we're ready!
 
 **Notes:**
@@ -100,9 +100,9 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   
 ### Task 3.1. Creating a new layer with a subset of all the features.
 
-  1. We will select a subset of features to get the address of. We can do this with a simple selection expression. For example, select all capital cities with a population rank of 14.  
+  1. We will select a subset of features to get the address of. We can do this with a simple selection expression. For example, select all capital cities with a population greater than 10 million.  
       ```python
-       get_population_rank() = 14
+       is_populous_capital(10000000)
       ```
   2. Create a new layer containing only these selected points. Right click on the layer in the Layers planel and select *Save As*.
   3. Keeping all fields as default, browse to the directory where you want to save the file and give it a name.
@@ -115,10 +115,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 
  1. Nominatim is the search engine used in Openstreetmap data. We will be using Nominatim's [reverse geocoding API](http://wiki.openstreetmap.org/wiki/Nominatim#Reverse_Geocoding) to get the address of a point given its latitude and longitude.
  2. Open the Field Calculator by clicking on the *Field Calculator* button in the attributes toolbar. 
- 3. Note the following in *get_address.py*. 
-    * In the function get_address(), we make an API request, passing the latitude and longitude, as well as some more data in accordance with the API's usage policy.
-    * With the function get_env_variable(), we can get the value of any global, project or layer variable.
-    * The iface object gives us access to a wide range of QGIS objects and classes.
+ 3. Note that in the function get_address(), we make an API request, passing the latitude and longitude, as well as some more data in accordance with the API's usage policy.
  4. In the Field Calculator, enter the *Output field name* as 'address'.
  5. Change the *Output Field Type* to 'Text (string)'.
  6. Enter a value for the *Output Field Length*, say '100'.
@@ -127,13 +124,13 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
  9. A new column named 'address' containing the address for each feature will have been added to the attribute table.
  
 
-## Task 4. Recap and Working with OSM Data 
+## Recap and Working with OSM Data
 
   - **Dataset used:** Uster
   - **Objective:** Recap of what we have learnt to select all the restaurants in Uster and label them with their addresses.
   - **Functions:** hstore_contains_key_value() and hstore_get_value()
   
-### Task 4.1. Filtering out all the restaurant points.
+### Filtering out all the restaurant points.
 
   1. Right click on the layer *uster_address_p* and click on *Filter*.
   2. In the *Query Builder* dialog box, under *Provider specific filter expression*, emter the expression as:
@@ -142,7 +139,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
  ```
   3. Click on *OK*. Only the restaurants will now be visible on the map.
 
-### Task 4.2. Labeling the restaurants as 'Name, address'.
+### Labeling the restaurants as 'Name, address'.
 
  1. Go to *Layer Properties -> Labels* or click on the *Layer labeling Options* in the Labels toolbar.
  2. Select *Show labels for this layer*.
@@ -164,3 +161,18 @@ In QGIS 2.18, any feature attributes/columns that we use within the function mus
       is_populated = feature['pop_max'] > input_pop
       return is_capital and is_populated
   ```
+  
+## Bonus Material
+
+```python  
+"""
+nullif - returns a None/NULL value if argument_1 equals to argument_2, 
+otherwise it returns argument_1 (SQL alike).
+Usage e.g.: coalesce(nullif("name",''), nullif("name_en",''), 'unknown')
+"""
+@qgsfunction(args='auto', group='Custom')
+def nullif(argument_1, argument_2, feature, parent):
+    if argument_1 == argument_2:
+        return None
+    return argument_1
+```
