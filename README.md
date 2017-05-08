@@ -100,9 +100,9 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
   
 ### Task 3.1. Creating a new layer with a subset of all the features.
 
-  1. We will select a subset of features to get the address of. We can do this with a simple selection expression. For example, select all capital cities with a population rank of 14.  
+  1. We will select a subset of features to get the address of. We can do this with a simple selection expression. For example, select all capital cities with a population greater than 10 million.  
       ```python
-       get_population_rank() = 14
+       is_populous_capital(10000000)
       ```
   2. Create a new layer containing only these selected points. Right click on the layer in the Layers planel and select *Save As*.
   3. Keeping all fields as default, browse to the directory where you want to save the file and give it a name.
@@ -164,3 +164,18 @@ In QGIS 2.18, any feature attributes/columns that we use within the function mus
       is_populated = feature['pop_max'] > input_pop
       return is_capital and is_populated
   ```
+  
+## Bonus Material
+
+```python  
+"""
+nullif - returns a None/NULL value if argument_1 equals to argument_2, 
+otherwise it returns argument_1 (SQL alike).
+Usage e.g.: coalesce(nullif("name",''), nullif("name_en",''), 'unknown')
+"""
+@qgsfunction(args='auto', group='Custom')
+def nullif(argument_1, argument_2, feature, parent):
+    if argument_1 == argument_2:
+        return None
+    return argument_1
+```
