@@ -16,7 +16,7 @@ For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Fun
 3. Start up QGIS 2.18 and we're ready!
 
 **Notes:**
-  * This repository contains some expression functions that we will use during the workshop. Please navigate to  You can save them to `%userprofile%/.qgis2/python/expressions`.
+  * This repository contains some expression functions that we will use during the workshop. You can save them to `%userprofile%/.qgis2/python/expressions`.
   * For QGIS 2.14 users, please see the section **Notes for QGIS 2.14** below. 
 
 
