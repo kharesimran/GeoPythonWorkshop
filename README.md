@@ -164,15 +164,41 @@ In QGIS 2.18, any feature attributes/columns that we use within the function mus
   
 ## Bonus Material
 
-```python  
-"""
-nullif - returns a None/NULL value if argument_1 equals to argument_2, 
-otherwise it returns argument_1 (SQL alike).
-Usage e.g.: coalesce(nullif("name",''), nullif("name_en",''), 'unknown')
-"""
-@qgsfunction(args='auto', group='Custom')
-def nullif(argument_1, argument_2, feature, parent):
-    if argument_1 == argument_2:
-        return None
-    return argument_1
+**nullif('argument_1', argument_2')**
+
+Returns a None/NULL value if argument_1 is equal to argument_2, otherwise it returns argument_1 (SQL alike).
+
 ```
+For example, 
+
+  ```python
+    nullif('hello world','')
+  ```
+  
+The expression function above will return 'hello world'. A good use case would be to use this function with the in-built coalesce in an expression like the following.
+
+  ```python
+    coalesce(nullif("name",''), nullif("name_en",''), 'unknown')
+  ```
+
+Where "name" and "name_en" are field names (note the double quotes). This would return the 'name' if it is not an empty string, 'name_en' if the 'name' is empty and 'unknown' if both the 'name' and 'name_en' are empty.
+
+
+**jitter_geometry('max_offset_percent', 'segment_length_percent')**
+
+This function creates a jittered geometry from a linestring or polygon geometry. Given the maximum offset and segment length as percentages, it first interpolates points on the linestring or polygon boundary at the segments. Then it displaces the point perpendicular to the linestring or polygon boundary by a random distance less than or equal to the maximum offset. Finally it joins all these displaced points and returns a jittered geometry.
+
+To use this function:   
+
+1. Go to Layer Properties -> Style -> Click on the green *Plus* button to *Add a Symbol layer*.
+2. Set the *Symbol layer type* as *Geometry generator*.
+3. Set the *Geometry Type* as *LineString/MultiLineString* for linestrings or *Polygon/Multipolygon* for polygons.
+4. *Load* the *jitter_geometry.py* file in the Function Editor.
+5. In the Expression Tab, call the function as:
+
+  ```python
+    jitter_geometry(5, 20)
+  ```
+Where '5' and '20' are the maximum_offset_percent and segment_length_percent respectively. These values can range between 1 and 99.
+
+6. On clicking 'OK' the jittered geometries will be displayed on the layer.
