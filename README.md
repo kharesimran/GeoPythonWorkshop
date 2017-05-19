@@ -168,11 +168,10 @@ In QGIS 2.18, any feature attributes/columns that we use within the function mus
 
 Returns a None/NULL value if argument_1 is equal to argument_2, otherwise it returns argument_1 (SQL alike).
 
-```
 For example, 
 
   ```python
-    nullif('hello world','')
+      nullif('hello world','')
   ```
   
 The expression function above will return 'hello world'. A good use case would be to use this function with the in-built coalesce in an expression like the following.
