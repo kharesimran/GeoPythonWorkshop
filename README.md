@@ -1,5 +1,5 @@
 # GeoPython-Workshop
-For the GeoPython Workshop, Easy Programming QGIS with Python for Expression Functions. 
+For the GeoPython Workshop: **Writing Custom Python Expression Functions in QGIS**
 
 ## Custom Python Expression Functions in QGIS
   Expression functions give us the power to automate tasks, perform calculations on the available data, and custom select and label features in QGIS. During this workshop we will use expression functions to customize tasks like the following and discover how this opens up various new possibilities of what can be achieved using this open source GIS application.
